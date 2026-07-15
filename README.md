@@ -46,7 +46,7 @@ albarracin/
     obras.py       # httpx fetch of catalog API, 60s in-memory cache, graceful fallback
   templates/       # Jinja2 templates (index.html renders obras via {% for %})
   static/
-    assets/        # fonts, img, style.css, script.js, obras.js, ignored by .gitignore since those are large files
+    assets/        # fonts, img, style.css, script.js, obras.js, (img ignored by .gitignore since those are large files)
   requirements.txt
   Dockerfile
 ```

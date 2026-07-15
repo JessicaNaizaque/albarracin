@@ -40,4 +40,4 @@ Thumbs.db
 *.log
 
 # Large files
-static/assets/*
+static/assets/img/*
