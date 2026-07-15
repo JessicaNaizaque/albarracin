@@ -1,0 +1,510 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Christian Albarracín - Tienda</title>
+ <link rel="icon" href="assets/img/logo albarracin.png" type="image/x-icon">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Anek+Gujarati:wght@100..800&display=swap" rel="stylesheet">
+
+
+<link href="assets/style.css?v=2" rel="stylesheet">
+</head>
+<body class="page-cartografias loading">
+
+
+    <header id="header">
+
+        <nav id="mainNav" class="navbar fixed-top">
+
+            <div class="container-fluid">
+
+                <!-- Logo -->
+
+                <a href="index.html" class="navbar-logo">
+                    <img
+                        id="logoNav"
+                        src="assets/img/logo-negro.png"
+                        alt="Christian Albarracín">
+                </a>
+
+                <!-- Botón Mobile -->
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Abrir menú">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+                <!-- Navegación -->
+
+                <div class="nav-wrapper" id="navWrapper">
+
+                    <ul class="nav-menu">
+
+                        <li>
+                            <a href="index.html">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="cartografias.html">
+                                Trabajo
+                            </a>
+                        </li>
+
+                <!-- Mega Menu -->
+
+                        <li class="has-mega d-flex submenu-desplegar">
+
+                            <a
+                                href="tienda.html"
+                               >
+
+                                Tienda
+
+                              
+
+                            </a>
+                            <a href="tienda.html"  class="mega-trigger">
+                                  <span class="arrow">
+
+                                    <svg
+                                        width="12"
+                                        height="8"
+                                        viewBox="0 0 12 8"
+                                        fill="none">
+
+                                        <path
+                                            d="M1 1L6 6L11 1"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"/>
+
+                                    </svg>
+
+                                </span>
+                            </a>
+
+                            <div class="mega-menu">
+
+                                <div class="mega-content">
+
+                                    <div class="mega-column">
+
+                                        <a href="producto.html">
+                                            Escultura
+                                        </a>
+
+                                        <a href="producto.html">
+                                            Instalación
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </li>
+
+                        <li>
+
+                            <a href="contacto.html">
+                                Contacto
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+<section id="obras-grid">
+
+    <div class="obras-container">
+
+        {% for obra in obras %}
+
+        <article class="obra-item" data-id="{{ obra.id }}">
+
+            <figure class="obra-media">
+
+                    <img
+                        src="{{ obra.cover_image or 'assets/img/sujeto-ciudad-35.png' }}"
+                        alt="{{ obra.slug }}">
+
+                </figure>
+
+                <div class="obra-info">
+
+                    <h3>{{ obra.title }}</h3>
+
+                    <span>{{ obra.price }} {{ obra.currency }}</span>
+
+                </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<section id="obra-detalle">
+<div class="cerrar">
+<button id="closeDetalle" class="close-detalle">
+        ×
+    </button>
+</div>
+     
+
+    <div class="obra-layout">
+
+    <div class="obra-galeria">
+
+          <div class="obra-principal" id="viewer"></div>
+          <div class="thumb-grid "></div>
+    </div> 
+
+        
+
+        <!-- INFORMACIÓN -->
+
+        <aside class="obra-sidebar">
+
+            <span class="artista">
+                Chistian Albarracin
+            </span>
+
+            <h2>
+                PRISMA CEDRO
+            </h2>
+
+            <span class="categoria">
+                COLOR
+            </span>
+
+            <div class="precio">
+                $ 00.000.00
+            </div>
+
+            <div class="guia-link">
+
+                Guia de tamaño
+
+                <button id="openGuide">
+                    ver
+                </button>
+
+            </div>
+
+            <div class="sizes"></div>
+
+            <div class="selector-row">
+
+                <div>
+
+                    <label>Cantidad</label>
+
+                    <div class="qty">
+
+                        <button>-</button>
+                        <span>1</span>
+                        <button>+</button>
+
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <label>Color</label>
+
+                    <div id="colorSelector"></div>
+
+                </div>
+
+            </div>
+
+            <button class="cart-btn" id="addToCart" disabled>
+                AGREGAR AL CARRITO
+            </button>
+
+            <!-- GUIA -->
+
+            <!-- <div id="guideTable">
+
+                <!-- <button id="closeGuide" onclick="document.getElementById('sizeGuide').classList.remove('active')">
+    ×
+</button>
+
+                <img
+                src="assets/img/tamannos.png"
+                alt="Guía"> -->
+
+                  <!-- <div id="guideTable"></div> -->
+
+            <!-- </div> --> 
+
+            <div id="sizeGuide">
+    <div id="guideTable"></div>
+
+    <img
+        id="guideImage"
+        src="assets/img/tamannos.png"
+        alt="Guía de tamaños">
+
+
+</div>
+
+        </aside>
+
+    </div>
+
+</section>
+
+
+
+
+<section id="newsletter-footer">
+
+    <div class="container-fluid">
+
+        
+
+        <!-- FOOTER -->
+
+        <footer class="footer-main">
+
+            <!-- SOCIAL -->
+
+            <div class="footer-social">
+
+                <a href="https://www.instagram.com/christianalbarracin.art?igsh=MWdmb3B1NnJ0aTQyZw==">
+                    <i class="bi bi-instagram"> <img width="50" src="assets/img/INSTA.png" alt=""></i>
+                </a>
+
+                <a href="https://www.facebook.com/share/1PTKUYyg4p/">
+                    <i class="bi bi-facebook"><img width="50" src="assets/img/FACE.png" alt=""></i>
+                </a>
+
+                <a href="#">
+                    <i class="bi bi-youtube"><img width="50" src="assets/img/YT.png" alt=""></i>
+                </a>
+
+            </div>
+
+            <!-- BRAND -->
+
+            <div class="footer-brand">
+
+                <img width="500" src="assets/img/name-footer-2.png" alt="">
+
+            </div>
+
+            <!-- LEGAL -->
+
+            <div class="footer-legal">
+
+                <a href="#">
+                    Política de privacidad
+                </a>
+
+                <span>-</span>
+
+                <a href="#">
+                    Cookies
+                </a>
+
+                <span>-</span>
+
+                <a href="#">
+                    Términos y condiciones
+                </a>
+
+                <span>-</span>
+
+                <a href="#">
+                    Aviso legal
+                </a>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PANEL CARRITO -->
+<!-- ========================================= -->
+
+<div id="cartOverlay">
+
+    <aside id="cartPanel">
+
+        <!-- CERRAR -->
+
+        <button id="closeCart">
+            ×
+        </button>
+
+        <!-- CABECERA -->
+
+        <div class="cart-top">
+
+            <div class="cart-info">
+
+                <div class="cart-price" id="cartPrice">
+                    $ 00.000.000
+                </div>
+
+                <div class="cart-artist" id="cartArtist">
+                    Christian Albarracin
+                </div>
+
+                <h2 class="cart-title" id="cartTitle">
+                    PRISMA CEDRO
+                </h2>
+
+                <div class="cart-category" id="cartCategory">
+                    COLOR
+                </div>
+
+            </div>
+
+            <div class="cart-image">
+
+                <img
+                    id="cartImage"
+                    src="assets/img/tmb-1.png"
+                    alt="Prisma Cedro">
+
+            </div>
+
+        </div>
+
+        <!-- DETALLE -->
+
+        <div class="cart-detail">
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    Cantidad______________
+                </span>
+
+                <span id="cartQty">
+                    1
+                </span>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    Tamaño______________
+                </span>
+
+                <span id="cartSize">
+                    120 CM
+                </span>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    Color_______________
+                </span>
+
+                <span id="cartColor">
+                    #Prisma Cedro
+                </span>
+
+            </div>
+
+            <div class="detail-subtotal">
+
+                <span id="cartSubtotal">
+                    $ 00.000.000
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- LINEA -->
+
+        <div class="cart-divider"></div>
+
+        <!-- TOTAL -->
+
+        <div class="cart-total">
+
+            <span>
+                Total:
+            </span>
+
+            <span id="cartTotal">
+                $ 00.000.000
+            </span>
+
+        </div>
+
+        <!-- BOTON -->
+
+        <div class="cart-footer">
+
+            <button class="buy-btn">
+
+                COMPRAR
+
+            </button>
+
+        </div>
+
+    </aside>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script id="obras-data" type="application/json">{{ obras | tojson }}</script>
+
+<script src="assets/script.js"></script>
+<script src="assets/producto.js"></script>
+
+
+
+</body>
+</html>
