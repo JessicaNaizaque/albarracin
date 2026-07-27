@@ -85,8 +85,18 @@
         return (a.hex || "") === (b.hex || "") && (a.label || "") === (b.label || "");
     }
 
-    function money(obra) {
-        return `${obra.price} ${obra.currency || ""}`.trim();
+    // The detail sidebar (not the grid/carousel) shows the price of the
+    // currently selected variant, falling back to the obra's base price
+    // when the variant has no price of its own.
+    function variantMoney(variant, obra) {
+        const value = variant && variant.price != null ? variant.price : obra.price;
+        const currency = (variant && variant.currency) || obra.currency || "";
+        return `${value} ${currency}`.trim();
+    }
+
+    function renderPrice() {
+        if (!precio || !state.obra) return;
+        precio.textContent = variantMoney(state.variant, state.obra);
     }
 
     // Color names come as Spanish labels (e.g. "Amarillo"); map the common
@@ -212,6 +222,7 @@
                 ensureColorForVariant();
                 renderColors();
                 renderGuide();
+                renderPrice();
                 updateAddToCart();
             });
 
@@ -359,10 +370,12 @@
         const obra = state.obra;
         if (!obra) return;
 
-        const unit = Number(obra.price) || 0;
+        const variant = state.variant;
+        const currency = (variant && variant.currency) || obra.currency || "";
+        const unit = Number(variant && variant.price != null ? variant.price : obra.price) || 0;
         const line = unit * state.qty;
-        const unitStr = `${unit} ${obra.currency || ""}`.trim();
-        const lineStr = `${line} ${obra.currency || ""}`.trim();
+        const unitStr = `${unit} ${currency}`.trim();
+        const lineStr = `${line} ${currency}`.trim();
 
         const colorLabel = (state.color && state.color.label) || "";
 
@@ -418,7 +431,7 @@
 
         artista.textContent = (obra.artist && obra.artist.name) || "Christian Albarracin";
         titulo.textContent = obra.title || "";
-        precio.textContent = money(obra);
+        renderPrice();
 
         buildGallery(obra);
         renderSizes();
