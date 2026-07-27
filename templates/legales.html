@@ -1,0 +1,802 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Christian Albarracín - Tienda</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Anek+Gujarati:wght@100..800&display=swap" rel="stylesheet">
+
+
+<link href="assets/style.css?v=2" rel="stylesheet">
+</head>
+<body class="page-cartografias tienda">
+
+    <header id="header">
+
+        <nav id="mainNav" class="navbar fixed-top">
+
+            <div class="container-fluid">
+
+                <!-- Logo -->
+
+                <a href="index.html" class="navbar-logo">
+                    <img
+                        id="logoNav"
+                        src="assets/img/logo-negro.png"
+                        alt="Christian Albarracín">
+                </a>
+
+                <!-- Botón Mobile -->
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Abrir menú">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+                <!-- Navegación -->
+
+                <div class="nav-wrapper" id="navWrapper">
+
+                    <ul class="nav-menu">
+
+                        <li>
+                            <a href="index.html">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="cartografias.html">
+                                Trabajo
+                            </a>
+                        </li>
+
+                        <!-- Mega Menu -->
+
+                        <li class="has-mega d-flex submenu-desplegar">
+
+                            <a
+                                href="tienda.html"
+                               >
+
+                                Tienda
+
+                              
+
+                            </a>
+                            <a href="tienda.html"  class="mega-trigger">
+                                  <span class="arrow">
+
+                                    <svg
+                                        width="12"
+                                        height="8"
+                                        viewBox="0 0 12 8"
+                                        fill="none">
+
+                                        <path
+                                            d="M1 1L6 6L11 1"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"/>
+
+                                    </svg>
+
+                                </span>
+                            </a>
+
+                            <div class="mega-menu">
+
+                                <div class="mega-content">
+
+                                    <div class="mega-column">
+
+                                        <a href="producto.html">
+                                            Escultura
+                                        </a>
+
+                                        <a href="producto.html">
+                                            Instalación
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </li>
+
+                        <li>
+
+                            <a href="contacto.html">
+                                Contacto
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+<section id="politica-de-privacidad" class="container py-5">
+
+    <h2 class="mb-4 mt-5">Política de Privacidad</h2>
+
+    <div class="info-item">
+
+        <button class="info-title">
+            1. Tratamiento de datos personales
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+
+          <p>
+        Al utilizar este sitio web, el usuario autoriza el tratamiento de los datos
+        personales que suministre mediante formularios de contacto, registro,
+        suscripción, compra de productos o cualquier otro medio habilitado.
+    </p>
+
+    <p>La información recopilada podrá utilizarse para:</p>
+
+    <ul>
+        <li>Gestionar compras y pedidos.</li>
+        <li>Procesar pagos.</li>
+        <li>Emitir facturas cuando corresponda.</li>
+        <li>Atender consultas y solicitudes.</li>
+        <li>Enviar información sobre productos, exposiciones, promociones o novedades, cuando el usuario haya otorgado su consentimiento.</li>
+        <li>Mejorar la experiencia de navegación y el funcionamiento del sitio.</li>
+    </ul>
+
+        </div>
+
+    </div>
+
+    <div class="info-item">
+
+        <button class="info-title">
+           2. Protección de la información
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+
+           <p>
+        Implementamos medidas técnicas y administrativas razonables para proteger
+        la información personal contra pérdida, acceso no autorizado, alteración
+        o divulgación.
+    </p>
+
+        </div>
+
+    </div>
+
+    <div class="info-item">
+
+        <button class="info-title">
+            3. Compartición de datos
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+
+                <p>
+                Los datos podrán ser compartidos únicamente con proveedores necesarios
+                para la operación del sitio, tales como:
+            </p>
+
+            <ul>
+                <li>Plataformas de pago.</li>
+                <li>Empresas de mensajería.</li>
+                <li>Alojamiento web.</li>
+                <li>Servicios tecnológicos.</li>
+            </ul>
+
+            <p>
+                Todos ellos deberán tratar la información conforme a la legislación
+                aplicable.
+            </p>
+
+
+        </div>
+
+    </div>
+
+    <div class="info-item">
+
+        <button class="info-title">
+            4. Derechos del usuario
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+
+            <p>El titular podrá solicitar:</p>
+
+            <ul>
+                <li>Acceso a sus datos personales.</li>
+                <li>Actualización de la información.</li>
+                <li>Rectificación de los datos.</li>
+                <li>Eliminación de sus datos personales.</li>
+            </ul>
+
+            <p>
+                Estas solicitudes podrán realizarse mediante los canales de contacto
+                publicados en este sitio.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="info-item">
+
+        <button class="info-title">
+           5. Cambios
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+
+            <p>
+        Nos reservamos el derecho de modificar esta política en cualquier momento.
+        Las modificaciones serán publicadas en esta misma página.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="politica-de-cookies" class="container py-5">
+
+    <h2 class="mb-4 mt-2">Política de Cookies</h2>
+
+    <div class="info-item">
+
+        <button class="info-title">
+            ¿Qué son las cookies?
+
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+
+          <p>
+        Las cookies son pequeños archivos que se almacenan en el dispositivo del
+        usuario cuando visita este sitio web. Su finalidad es mejorar la
+        experiencia de navegación, recordar preferencias y obtener estadísticas
+        de uso.
+    </p>
+
+    <p>La información recopilada podrá utilizarse para:</p>
+
+    <ul>
+        <li>Gestionar compras y pedidos.</li>
+        <li>Procesar pagos.</li>
+        <li>Emitir facturas cuando corresponda.</li>
+        <li>Atender consultas y solicitudes.</li>
+        <li>Enviar información sobre productos, exposiciones, promociones o novedades, cuando el usuario haya otorgado su consentimiento.</li>
+        <li>Mejorar la experiencia de navegación y el funcionamiento del sitio.</li>
+    </ul>
+
+        </div>
+
+    </div>
+
+    <div class="info-item">
+
+        <button class="info-title">
+          ¿Qué cookies utilizamos?
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+
+           <p>Este sitio puede utilizar los siguientes tipos de cookies:</p>
+
+    <ul>
+        <li>
+            <strong>Cookies técnicas:</strong> necesarias para el funcionamiento
+            del sitio y del proceso de compra.
+        </li>
+        <li>
+            <strong>Cookies de preferencias:</strong> permiten recordar
+            configuraciones del usuario.
+        </li>
+        <li>
+            <strong>Cookies analíticas:</strong> recopilan información
+            estadística sobre el uso del sitio para mejorar nuestros servicios.
+        </li>
+        <li>
+            <strong>Cookies de marketing (cuando aplique):</strong> ayudan a
+            mostrar contenido o publicidad relevante.
+        </li>
+    </ul>
+
+        </div>
+
+    </div>
+
+    <div class="info-item">
+
+        <button class="info-title">
+           Gestión de cookies
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+
+               <p>
+        El usuario puede aceptar, rechazar o configurar el uso de cookies desde
+        el aviso correspondiente o mediante la configuración de su navegador.
+        La desactivación de algunas cookies puede afectar el funcionamiento del
+        sitio.
+    </p>
+
+
+        </div>
+
+    </div>
+
+    <div class="info-item">
+
+        <button class="info-title">
+           Modificaciones
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+
+            <p>
+        Esta política podrá actualizarse en cualquier momento para reflejar
+        cambios legales o técnicos.
+    </p>
+
+        </div>
+
+    </div>
+
+ 
+</section>
+
+<section id="terminos-y-condiciones" class="container py-5">
+
+    <h2 class="mb-4 mt-2">Términos y Condiciones</h2>
+
+    <div class="info-item">
+
+        <button class="info-title">
+           1. Aceptación
+
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+
+             <p>
+        El acceso y uso de este sitio web implica la aceptación de los presentes
+        Términos y Condiciones.
+    </p>
+
+        </div>
+
+    </div>
+
+    <div class="info-item">
+
+        <button class="info-title">
+         2. Objeto
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+
+             <p>
+        Este sitio ofrece información sobre obras de arte, exhibiciones y la
+        comercialización de obras originales, reproducciones, productos
+        relacionados y demás servicios ofrecidos por el titular.
+    </p>
+
+        </div>
+
+    </div>
+
+    <div class="info-item">
+
+        <button class="info-title">
+           3. Propiedad intelectual
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+
+        <p>
+            Todo el contenido del sitio, incluyendo obras de arte, fotografías,
+            imágenes, ilustraciones, diseños, textos, logotipos, videos y demás
+            elementos, está protegido por la legislación sobre propiedad intelectual.
+        </p>
+
+        <p>
+            Queda prohibida su reproducción, distribución, modificación,
+            publicación o utilización sin autorización previa y por escrito del
+            titular o de los respectivos autores.
+        </p>
+
+        <p>
+            La compra de una obra física no implica la cesión de los derechos de
+            autor sobre la misma.
+        </p>
+
+        </div>
+
+    </div>
+
+    <div class="info-item">
+
+        <button class="info-title">
+           4. Registro del usuario
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+
+           <p>
+        Cuando sea necesario crear una cuenta, el usuario deberá proporcionar
+        información veraz y mantener la confidencialidad de sus credenciales de
+        acceso.
+    </p>
+
+        </div>
+
+    </div>
+    
+    <div class="info-item">
+
+        <button class="info-title">
+           5. Compras
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+ <p>Las compras estarán sujetas a:</p>
+
+    <ul>
+        <li>Disponibilidad de inventario.</li>
+        <li>Confirmación del pago.</li>
+        <li>Validación de la información suministrada por el comprador.</li>
+        <li>Confirmación del pedido por parte del vendedor.</li>
+    </ul>
+
+    <p>
+        Nos reservamos el derecho de cancelar pedidos por errores evidentes de
+        precio, disponibilidad o información fraudulenta.
+    </p>
+
+        </div>
+
+    </div>
+
+        <div class="info-item">
+
+        <button class="info-title">
+          6. Precios
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+            <p>
+        Todos los precios se publican en la moneda indicada e incluyen los
+        impuestos aplicables cuando la legislación así lo exija.
+    </p>
+
+    <p>
+        Los precios podrán modificarse sin previo aviso, sin afectar pedidos ya
+        confirmados.
+    </p>
+
+        </div>
+
+    </div>
+
+    <div class="info-item">
+
+        <button class="info-title">
+        7. Medios de pago
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+           <p>
+        Los pagos podrán realizarse mediante plataformas electrónicas
+        autorizadas.
+    </p>
+
+    <p>
+        El sitio no almacena información de tarjetas de crédito o débito; dicha
+        información es procesada directamente por el proveedor de pagos.
+    </p>
+
+        </div>
+
+    </div>
+
+    <div class="info-item">
+
+        <button class="info-title">
+       8. Envíos
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+        <p>
+        Los tiempos de entrega son estimados y pueden variar por causas
+        logísticas, aduaneras o de fuerza mayor.
+    </p>
+
+    <p>
+        El comprador deberá verificar el estado del producto al momento de
+        recibirlo.
+    </p>
+
+        </div>
+
+    </div>
+
+        <div class="info-item">
+
+        <button class="info-title">
+      9. Cambios y devoluciones
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+       <p>
+        Las obras originales, por su naturaleza artística, no admiten
+        devoluciones salvo que presenten defectos de fabricación, daños durante
+        el transporte o exista un error en el despacho.
+    </p>
+
+    <p>
+        Las solicitudes deberán realizarse dentro de los plazos establecidos por
+        la legislación aplicable.
+    </p>
+
+        </div>
+
+    </div>
+
+    <div class="info-item">
+
+        <button class="info-title">
+     10. Responsabilidad
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+       <p>
+        No garantizamos que el sitio esté disponible de manera ininterrumpida ni
+        que se encuentre libre de errores.
+    </p>
+
+    <p>
+        No seremos responsables por daños derivados del uso indebido del sitio o
+        por interrupciones ocasionadas por terceros.
+    </p>
+
+        </div>
+
+    </div>
+
+        <div class="info-item">
+
+        <button class="info-title">
+     11. Modificaciones
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+       <p>
+        Nos reservamos el derecho de actualizar estos términos en cualquier
+        momento. Las modificaciones serán publicadas en este sitio web.
+    </p>
+
+        </div>
+
+    </div>
+
+            <div class="info-item">
+
+        <button class="info-title">
+   12. Legislación aplicable
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+      <p>
+        Estos términos se regirán por la legislación vigente del país donde
+        opere el titular del sitio web.
+    </p>
+
+        </div>
+
+    </div>
+
+    
+
+ 
+</section>
+
+<section id="aviso-legal" class="container py-5">
+
+    <h2 class="mb-4 mt-2">Aviso Legal</h2>
+
+    <div class="info-item">
+
+        <button class="info-title">
+                Aviso Legal
+            <span>+</span>
+        </button>
+
+        <div class="info-content">
+       <p>
+        La información contenida en este sitio web tiene fines informativos,
+        culturales y comerciales.
+    </p>
+
+    <p>
+        Aunque procuramos mantener la información actualizada y correcta, no
+        garantizamos la ausencia de errores, omisiones o interrupciones del
+        servicio.
+    </p>
+
+    <p>
+        Las imágenes de las obras pueden presentar ligeras variaciones de color
+        respecto al producto físico debido a la configuración de los dispositivos
+        de visualización.
+    </p>
+
+    <p>
+        Los enlaces a sitios de terceros se ofrecen únicamente como referencia y
+        no implican respaldo o responsabilidad sobre sus contenidos.
+    </p>
+
+    <p>
+        Todas las marcas, nombres comerciales, obras, fotografías y demás
+        contenidos pertenecen a sus respectivos titulares y están protegidos por
+        la legislación sobre propiedad intelectual.
+    </p>
+
+    <p>
+        El uso no autorizado de cualquier contenido podrá dar lugar a las
+        acciones legales correspondientes.
+    </p>
+
+        </div>
+
+    </div>
+
+    
+
+ 
+</section>
+
+
+
+
+<section id="newsletter-footer">
+
+    <div class="container-fluid">
+
+        
+
+        <!-- FOOTER -->
+
+        <footer class="footer-main">
+
+            <!-- SOCIAL -->
+
+            <div class="footer-social">
+
+                <a href="https://www.instagram.com/christianalbarracin.art?igsh=MWdmb3B1NnJ0aTQyZw==" target="_blank">
+                    <i class="bi bi-instagram"> <img width="50" src="assets/img/INSTA.png" alt=""></i>
+                </a>
+
+                <a href="https://www.facebook.com/share/1PTKUYyg4p/" target="_blank">
+                    <i class="bi bi-facebook"><img width="50" src="assets/img/FACE.png" alt=""></i>
+                </a>
+
+                <a href="#" target="_blank">
+                    <i class="bi bi-youtube"><img width="50" src="assets/img/YT.png" alt=""></i>
+                </a>
+
+            </div>
+
+            <!-- BRAND -->
+
+            <div class="footer-brand">
+
+                <img width="500" src="assets/img/name-footer-2.png" alt="">
+
+            </div>
+
+            <!-- LEGAL -->
+
+            <div class="footer-legal">
+
+                <a href="legales.html#politica-de-privacidad" >
+                    Política de privacidad
+                </a>
+
+                <span>-</span>
+
+                <a href="legales.html#politica-de-cookies" >
+                    Cookies
+                </a>
+
+                <span>-</span>
+
+                <a href="legales.html#terminos-y-condiciones" >
+                    Términos y condiciones
+                </a>
+
+                <span>-</span>
+
+                <a href="legales.html#aviso-legal" >
+                    Aviso legal
+                </a>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+<script src="assets/script.js"></script>
+<script>
+
+    document.querySelectorAll(".info-title").forEach(btn=>{
+
+    btn.addEventListener("click",()=>{
+
+        btn.parentElement.classList.toggle("active");
+
+    });
+
+});
+</script>
+
+
+</body>
+</html>

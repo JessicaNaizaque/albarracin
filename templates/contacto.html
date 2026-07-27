@@ -142,81 +142,114 @@
     </header>
 
 
-<section id="contacto">
+<section id="contacto" class="py-5">
 
-    <div class="contacto-container">
+    <div class="container ">
 
-        <!-- Imagen -->
+        <div class="row align-items-center g-5 ">
 
-        <div class="contacto-imagen">
+            <!-- Imagen -->
 
-            <img src="assets/img/contacto.jpg" alt="Contacto">
+            <div class="col-lg-6">
 
-        </div>
+                <img
+                    src="assets/img/foto-contactp.jpg"
+                    class="img-fluid w-100 contacto-img"
+                    alt="Christian Albarracín">
 
-        <!-- Formulario -->
+            </div>
 
-        <div class="contacto-formulario">
+            <!-- Formulario -->
 
+            <div class="col-lg-6 mt-6">
 
-            <h1>
-                Hablemos de arte.
-            </h1>
+                <h1 class="contact-title">
+                    <span class="script">H</span>
+                    ABLEMOS
+                    <br>
+                    DE ARTE
+                </h1>
 
-            <p>
-                Si deseas adquirir una obra, realizar una consulta o conocer
-                más sobre el trabajo del artista, completa el siguiente formulario.
-            </p>
+                <p class="contact-copy">
 
-            <form>
+                    Si deseas adquirir una obra, realizar una consulta o conocer
+                    más sobre el trabajo del artista, completa el siguiente
+                    formulario.
 
-                <div class="campo">
+                </p>
 
-                    <label>Nombre</label>
+                <form
+                    id="contactForm"
+                    class="needs-validation"
+                    novalidate>
 
-                    <input
-                        type="text"
-                        placeholder="Tu nombre">
+                    <div class="mb-4">
 
-                </div>
+                        <label class="form-label">
+                            Tu nombre
+                        </label>
 
-                <div class="campo">
+                        <input
+                            type="text"
+                            class="form-control form-line"
+                            required>
 
-                    <label>Correo electrónico</label>
+                    </div>
 
-                    <input
-                        type="email"
-                        placeholder="correo@ejemplo.com">
+                    <div class="mb-4">
 
-                </div>
+                        <label class="form-label">
+                            Correo electrónico
+                        </label>
 
-                <div class="campo">
+                        <input
+                            type="email"
+                            class="form-control form-line"
+                            required>
 
-                    <label>Asunto</label>
+                    </div>
 
-                    <input
-                        type="text"
-                        placeholder="Asunto">
+                    <div class="mb-4">
 
-                </div>
+                        <label class="form-label">
+                            Asunto
+                        </label>
 
-                <div class="campo">
+                        <input
+                            type="text"
+                            class="form-control form-line"
+                            required>
 
-                    <label>Mensaje</label>
+                    </div>
 
-                    <textarea
-                        rows="6"
-                        placeholder="Escribe tu mensaje..."></textarea>
+                    <div class="mb-5">
 
-                </div>
+                        <label class="form-label">
+                            Mensaje
+                        </label>
 
-                <button type="submit">
+                        <textarea
+                            rows="8"
+                            class="form-control form-area"
+                            required></textarea>
 
-                    ENVIAR MENSAJE
+                    </div>
 
-                </button>
+                    <div class="text-end">
 
-            </form>
+                        <button
+                            class="btn btn-dark px-5 py-3"
+                            type="submit">
+
+                            ENVIAR MENSAJE
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
 
         </div>
 
@@ -239,15 +272,15 @@
 
             <div class="footer-social">
 
-                <a href="https://www.instagram.com/christianalbarracin.art?igsh=MWdmb3B1NnJ0aTQyZw==">
+                <a href="https://www.instagram.com/christianalbarracin.art?igsh=MWdmb3B1NnJ0aTQyZw==" target="_blank">
                     <i class="bi bi-instagram"> <img width="50" src="assets/img/INSTA.png" alt=""></i>
                 </a>
 
-                <a href="https://www.facebook.com/share/1PTKUYyg4p/">
+                <a href="https://www.facebook.com/share/1PTKUYyg4p/" target="_blank">
                     <i class="bi bi-facebook"><img width="50" src="assets/img/FACE.png" alt=""></i>
                 </a>
 
-                <a href="#">
+                <a href="#" target="_blank">
                     <i class="bi bi-youtube"><img width="50" src="assets/img/YT.png" alt=""></i>
                 </a>
 
@@ -265,25 +298,25 @@
 
             <div class="footer-legal">
 
-                <a href="#">
+                <a href="legales.html#politica-de-privacidad" target="_blank">
                     Política de privacidad
                 </a>
 
                 <span>-</span>
 
-                <a href="#">
+                <a href="legales.html#politica-de-cookies" target="_blank">
                     Cookies
                 </a>
 
                 <span>-</span>
 
-                <a href="#">
+                <a href="legales.html#terminos-y-condiciones" target="_blank">
                     Términos y condiciones
                 </a>
 
                 <span>-</span>
 
-                <a href="#">
+                <a href="legales.html#aviso-legal" target="_blank">
                     Aviso legal
                 </a>
 

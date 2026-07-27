@@ -35,20 +35,22 @@
     const titulo = detalle.querySelector("h2");
     const categoria = detalle.querySelector(".categoria");
     const precio = detalle.querySelector(".precio");
-    const sizesWrap = detalle.querySelector(".sizes");
+    const sizesWrap = document.getElementById("Medida");
+    const tamanoLabel = detalle.querySelector(".tamanno label");
+    const stockLabel = detalle.querySelector(".stock label");
     const colorSelector = document.getElementById("colorSelector");
-    const qtyWrap = detalle.querySelector(".qty");
-    const qtyValue = qtyWrap ? qtyWrap.querySelector("span") : null;
-    const qtyButtons = qtyWrap ? qtyWrap.querySelectorAll("button") : [];
+    const colorDisable = document.getElementById("colorDisable");
     const addToCart = document.getElementById("addToCart");
     const guideTable = document.getElementById("guideTable");
+    const openGuide = document.getElementById("openGuide");
+    const sizeGuide = document.getElementById("sizeGuide");
     const closeDetalle = document.getElementById("closeDetalle");
 
     const state = {
         obra: null,
         sizes: [],
-        colors: [],
         size: null,
+        variant: null,
         color: null,
         qty: 1,
     };
@@ -59,16 +61,28 @@
         return [...new Set(arr)];
     }
 
-    function variantFor(size, color) {
+    // Each size maps to its own variant, and colors are independent per
+    // variant (available_colors / sold_units never mix across variants).
+    function variantForSize(size) {
         if (!state.obra) return null;
-        return (state.obra.variants || []).find(
-            (v) => v.size === size && v.color === color
-        ) || null;
+        return (state.obra.variants || []).find((v) => v.size === size) || null;
     }
 
-    function stockOf(size, color) {
-        const v = variantFor(size, color);
-        return v ? Number(v.stock) || 0 : 0;
+    function availableColorsFor(variant) {
+        return (variant && variant.available_colors) || [];
+    }
+
+    function soldUnitsFor(variant) {
+        const units = (variant && variant.sold_units) || [];
+        return units
+            .slice()
+            .sort((a, b) => new Date(b.purchased_at) - new Date(a.purchased_at));
+    }
+
+    function isSameColor(a, b) {
+        if (!a || !b) return false;
+        if (a.id != null && b.id != null) return a.id === b.id;
+        return (a.hex || "") === (b.hex || "") && (a.label || "") === (b.label || "");
     }
 
     function money(obra) {
@@ -116,6 +130,14 @@
         if (COLOR_MAP[key]) return COLOR_MAP[key];
         if (isValidCssColor(name)) return name;
         return "#999999";
+    }
+
+    // Colors now arrive as { id, hex, label }; prefer the hex, falling back
+    // to the label lookup for older/partial data.
+    function colorCss(color) {
+        if (!color) return "#999999";
+        if (color.hex) return color.hex;
+        return colorToCss(color.label || color.name || "");
     }
 
     // ---------- Galeria ----------
@@ -167,6 +189,7 @@
     }
 
     function renderSizes() {
+        if (!sizesWrap) return;
         sizesWrap.innerHTML = "";
 
         state.sizes.forEach((size) => {
@@ -182,13 +205,13 @@
 
             btn.addEventListener("click", () => {
                 state.size = size;
+                state.variant = variantForSize(size);
                 sizesWrap.querySelectorAll("button").forEach(resetSizeBtn);
                 markSizeBtn(btn);
 
-                ensureColorForSize();
+                ensureColorForVariant();
                 renderColors();
                 renderGuide();
-                clampQty();
                 updateAddToCart();
             });
 
@@ -196,82 +219,89 @@
         });
     }
 
+    // ---------- Tamaño / Stock ----------
+
+    function renderSizeStock() {
+        if (tamanoLabel) {
+            tamanoLabel.textContent = state.size != null ? `${state.size} cm` : "";
+        }
+        if (stockLabel) {
+            // Stock reflects the currently selected size's variant.
+            const variant = state.variant;
+            const total = variant ? Number(variant.quantity_available) || 0 : 0;
+            stockLabel.textContent = `${total} disponible${total === 1 ? "" : "s"}`;
+        }
+    }
+
     // ---------- Colores ----------
 
-    function ensureColorForSize() {
-        if (stockOf(state.size, state.color) > 0) return;
-        const alt = state.colors.find((c) => stockOf(state.size, c) > 0);
-        if (alt) state.color = alt;
+    function ensureColorForVariant() {
+        const colors = availableColorsFor(state.variant);
+        if (colors.some((c) => isSameColor(c, state.color))) return;
+        state.color = colors[0] || null;
+    }
+
+    function buildColorBtn(color) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "color-btn";
+        btn.style.background = colorCss(color);
+        btn.title = (color && color.label) || "";
+        return btn;
+    }
+
+    function buildSoldColorBtn(unit) {
+        const color = unit && unit.color;
+        const btn = buildColorBtn(color);
+        btn.classList.add("agotado");
+        btn.disabled = true;
+
+        const label = (color && color.label) || "";
+        const date = unit && unit.purchased_at
+            ? new Date(unit.purchased_at).toLocaleDateString("es-CO")
+            : "";
+        btn.title = [label, date].filter(Boolean).join(" · ");
+
+        return btn;
     }
 
     function renderColors() {
-        colorSelector.innerHTML = "";
+        renderSizeStock();
 
-        state.colors.forEach((color) => {
-            const stock = stockOf(state.size, color);
+        if (colorSelector) colorSelector.innerHTML = "";
+        if (colorDisable) colorDisable.innerHTML = "";
 
-            const btn = document.createElement("button");
-            btn.type = "button";
-            btn.className = "color-btn";
-            btn.style.background = colorToCss(color);
-            btn.title = color;
+        // Colors available for purchase on this specific size/variant.
+        availableColorsFor(state.variant).forEach((color) => {
+            const btn = buildColorBtn(color);
 
-            const num = document.createElement("span");
-            num.className = "color-num";
-            num.textContent = stock;
-            btn.appendChild(num);
-
-            if (stock <= 0) {
-                btn.classList.add("agotado");
-                btn.disabled = true;
-            }
-
-            if (color === state.color && stock > 0) {
+            if (isSameColor(color, state.color)) {
                 btn.classList.add("active");
             }
 
             btn.addEventListener("click", () => {
-                if (stock <= 0) return;
                 state.color = color;
-                colorSelector
-                    .querySelectorAll(".color-btn")
-                    .forEach((b) => b.classList.remove("active"));
+                if (colorSelector) {
+                    colorSelector
+                        .querySelectorAll(".color-btn")
+                        .forEach((b) => b.classList.remove("active"));
+                }
                 btn.classList.add("active");
 
-                categoria.textContent = color;
-                renderGuide();
-                clampQty();
+                categoria.textContent = color.label || "";
                 updateAddToCart();
             });
 
-            colorSelector.appendChild(btn);
+            if (colorSelector) colorSelector.appendChild(btn);
         });
 
-        categoria.textContent = state.color || "";
-    }
+        // Already-sold units for this variant, most recently purchased first.
+        soldUnitsFor(state.variant).forEach((unit) => {
+            const btn = buildSoldColorBtn(unit);
+            if (colorDisable) colorDisable.appendChild(btn);
+        });
 
-    // ---------- Cantidad ----------
-
-    function clampQty() {
-        const max = stockOf(state.size, state.color);
-        if (max <= 0) {
-            state.qty = 1;
-        } else {
-            state.qty = Math.min(Math.max(1, state.qty), max);
-        }
-        if (qtyValue) qtyValue.textContent = state.qty;
-    }
-
-    function setQty(next) {
-        const max = stockOf(state.size, state.color);
-        if (max <= 0) return;
-        state.qty = Math.min(Math.max(1, next), max);
-        if (qtyValue) qtyValue.textContent = state.qty;
-    }
-
-    if (qtyButtons.length === 2) {
-        qtyButtons[0].addEventListener("click", () => setQty(state.qty - 1));
-        qtyButtons[1].addEventListener("click", () => setQty(state.qty + 1));
+        categoria.textContent = (state.color && state.color.label) || "";
     }
 
     // ---------- Guia de tamano (dinamica) ----------
@@ -281,7 +311,10 @@
         guideTable.innerHTML = "";
 
         state.sizes.forEach((size) => {
-            const stock = stockOf(size, state.color);
+            const variant = variantForSize(size);
+            const stock = variant
+                ? Number(variant.quantity_available ?? variant.stock) || 0
+                : 0;
 
             const fila = document.createElement("div");
             fila.className = "guide-row";
@@ -309,6 +342,12 @@
         });
     }
 
+    if (openGuide && sizeGuide) {
+        openGuide.addEventListener("click", () => {
+            sizeGuide.classList.toggle("active");
+        });
+    }
+
     // ---------- Carrito ----------
 
     function setText(id, value) {
@@ -325,12 +364,14 @@
         const unitStr = `${unit} ${obra.currency || ""}`.trim();
         const lineStr = `${line} ${obra.currency || ""}`.trim();
 
+        const colorLabel = (state.color && state.color.label) || "";
+
         setText("cartTitle", obra.title || "");
         setText("cartArtist", (obra.artist && obra.artist.name) || "Christian Albarracín");
-        setText("cartCategory", state.color || "");
+        setText("cartCategory", colorLabel);
         setText("cartQty", state.qty);
         setText("cartSize", state.size != null ? `${state.size} cm` : "");
-        setText("cartColor", state.color || "");
+        setText("cartColor", colorLabel);
         setText("cartPrice", unitStr);
         setText("cartSubtotal", lineStr);
         setText("cartTotal", lineStr);
@@ -341,7 +382,15 @@
 
     function updateAddToCart() {
         if (!addToCart) return;
-        addToCart.disabled = stockOf(state.size, state.color) <= 0;
+
+        const obra = state.obra;
+        const variant = state.variant;
+        const obraOk = !!obra && obra.is_available !== false;
+        const variantOk = !!variant && variant.is_available !== false;
+        const variantQty = variant ? Number(variant.quantity_available) || 0 : 0;
+        const needsColor = availableColorsFor(variant).length > 0 && !state.color;
+
+        addToCart.disabled = !(obraOk && variantOk && variantQty > 0) || needsColor;
     }
 
     if (addToCart) {
@@ -360,17 +409,12 @@
                 .map((v) => v.size)
                 .filter((v) => v !== null && v !== undefined && v !== "")
         );
-        state.colors = uniq(
-            (obra.variants || [])
-                .map((v) => v.color)
-                .filter((v) => v !== null && v !== undefined && v !== "")
-        );
         state.size = state.sizes[0] || null;
-        state.color =
-            state.colors.find((c) => stockOf(state.size, c) > 0) ||
-            state.colors[0] ||
-            null;
+        state.variant = variantForSize(state.size);
+        state.color = availableColorsFor(state.variant)[0] || null;
         state.qty = 1;
+
+        if (sizeGuide) sizeGuide.classList.remove("active");
 
         artista.textContent = (obra.artist && obra.artist.name) || "Christian Albarracin";
         titulo.textContent = obra.title || "";
@@ -380,7 +424,6 @@
         renderSizes();
         renderColors();
         renderGuide();
-        clampQty();
         updateAddToCart();
     }
 

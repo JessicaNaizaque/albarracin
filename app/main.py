@@ -16,7 +16,7 @@ TEMPLATES_DIR = BASE_DIR / "templates"
 templates = Jinja2Templates(directory=TEMPLATES_DIR)
 
 # Pages that can be served via /{page} (index is served at /).
-PAGES = {"tienda", "producto", "contacto", "cartografias"}
+PAGES = {"tienda", "producto", "contacto", "cartografias", "legales"}
 
 app.mount("/assets", StaticFiles(directory=STATIC_DIR / "assets"), name="assets")
 
