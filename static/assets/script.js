@@ -320,31 +320,11 @@ if(document.getElementById("proyecto-destacado")){
 //     });
 // }
 
-const guide = document.getElementById("sizeGuide");
-const openGuide = document.getElementById("openGuide");
-const closeGuide = document.getElementById("closeGuide");
-
-if (guide && openGuide) {
-
-    openGuide.addEventListener("click", function (e) {
-
-        e.preventDefault();
-
-        guide.classList.toggle("active");
-
-    });
-
-}
-
-if (guide && closeGuide) {
-
-    closeGuide.addEventListener("click", function () {
-
-        guide.classList.remove("active");
-
-    });
-
-}
+// NOTE: opening/closing #sizeGuide is owned entirely by producto.js,
+// which also renders the dynamic size/stock table inside it. This file
+// used to attach its own duplicate click listener on #openGuide that
+// toggled the same "active" class, causing the two toggles to cancel
+// each other out on every click (confirmed via runtime logs).
 
 
 
