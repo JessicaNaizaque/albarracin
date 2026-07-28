@@ -234,7 +234,7 @@
 
     function renderSizeStock() {
         if (tamanoLabel) {
-            tamanoLabel.textContent = state.size != null ? `${state.size} cm` : "";
+            tamanoLabel.textContent = state.variant.dimensions != null ? `${state.variant.dimensions}` : "";
         }
         if (stockLabel) {
             // Stock reflects the currently selected size's variant.
