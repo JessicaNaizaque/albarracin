@@ -239,7 +239,7 @@
         if (stockLabel) {
             // Stock reflects the currently selected size's variant.
             const variant = state.variant;
-            const total = variant ? Number(variant.quantity_available) || 0 : 0;
+            const total = variant ? Number(variant.stock) || 0 : 0;
             stockLabel.textContent = `${total} disponible${total === 1 ? "" : "s"}`;
         }
     }
