@@ -4,7 +4,9 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from pydantic import BaseModel, Field
 
+from app.contact import ContactSubmissionError, send_contact_message
 from app.obras import fetch_obra, fetch_obras
 
 app = FastAPI(title="Albarracin")
@@ -22,6 +24,27 @@ PAGES = {"tienda", "producto", "contacto", "cartografias", "legales"}
 CATEGORIES = {"escultura", "instalacion"}
 
 app.mount("/assets", StaticFiles(directory=STATIC_DIR / "assets"), name="assets")
+
+
+class ContactMessage(BaseModel):
+    """Payload submitted by the "contacto" page form."""
+
+    name: str = Field(min_length=1)
+    email: str = Field(min_length=1)
+    subject: str = Field(min_length=1)
+    message: str = Field(min_length=1)
+
+
+@app.post("/api/contact", include_in_schema=False)
+def submit_contact(payload: ContactMessage):
+    """Forward the contact form submission to the upstream contact-messages API."""
+    try:
+        send_contact_message(payload.name, payload.email, payload.subject, payload.message)
+    except ContactSubmissionError as exc:
+        raise HTTPException(
+            status_code=502, detail="No se pudo enviar el mensaje. Inténtalo de nuevo más tarde."
+        ) from exc
+    return {"ok": True}
 
 
 @app.get("/", include_in_schema=False)

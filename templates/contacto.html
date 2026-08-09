@@ -190,6 +190,8 @@
                         </label>
 
                         <input
+                            id="contactName"
+                            name="name"
                             type="text"
                             class="form-control form-line"
                             required>
@@ -203,6 +205,8 @@
                         </label>
 
                         <input
+                            id="contactEmail"
+                            name="email"
                             type="email"
                             class="form-control form-line"
                             required>
@@ -216,6 +220,8 @@
                         </label>
 
                         <input
+                            id="contactSubject"
+                            name="subject"
                             type="text"
                             class="form-control form-line"
                             required>
@@ -229,15 +235,20 @@
                         </label>
 
                         <textarea
+                            id="contactMessage"
+                            name="message"
                             rows="8"
                             class="form-control form-area"
                             required></textarea>
 
                     </div>
 
+                    <div id="contactStatus" class="mb-4" role="status" aria-live="polite"></div>
+
                     <div class="text-end">
 
                         <button
+                            id="contactSubmit"
                             class="btn btn-dark px-5 py-3"
                             type="submit">
 
@@ -335,6 +346,7 @@
 
 
 <script src="assets/script.js"></script>
+<script src="assets/contacto.js"></script>
 
 
 </body>
