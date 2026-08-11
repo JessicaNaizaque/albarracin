@@ -267,6 +267,8 @@
         btn.classList.add("agotado");
         btn.disabled = true;
 
+        btn.textContent = unit?.unit_number || "";
+
         const label = (color && color.label) || "";
         const date = unit && unit.purchased_at
             ? new Date(unit.purchased_at).toLocaleDateString("es-CO")
