@@ -3098,7 +3098,9 @@ font-family: 'HelveticaNeueBold';
 .sizes{
 
     display:flex;
-
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    align-items:center;
     gap:20px;
     
     margin:30px 0;
@@ -3106,15 +3108,16 @@ font-family: 'HelveticaNeueBold';
 
 .sizes button{
 
-    width:113px;
-
+    flex:0 1 120px;
+    min-width: 90px;
     height:60px;
-
+    padding:0 14px;
     border:1px solid #7d7d7d;
 
     background:none;
     border-radius: 5px;
     font-size:1.8rem;
+    white-space:nowrap;
 }
 
 .selector-row{
@@ -3160,12 +3163,20 @@ font-family: 'HelveticaNeueBold';
     border-radius:50px;
     margin: 5px; 
     position: relative;
+    color: white;
+    font-weight: bold;
+    font-size: x-large;
 }
 
 .color-btn.agotado {
-    opacity: 0.5;
+    opacity: 0.6;
     cursor: not-allowed;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;    
 }
 
 .color-btn.agotado::after {
@@ -3393,6 +3404,7 @@ font-family: 'HelveticaNeueBold';
     .sizes {
         gap: 8px;
         flex-wrap: wrap;
+        justify-content: center;
     }
     .sizes button {
         width: 70px;
