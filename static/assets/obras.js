@@ -467,20 +467,20 @@ function cargarColores(obra){
         }
 
     
-       btn.addEventListener("click", () => {
+        btn.addEventListener("click", () => {
 
-    document.querySelectorAll(".color-btn")
-        .forEach(b => b.classList.remove("active"));
+            document.querySelectorAll(".color-btn")
+                .forEach(b => b.classList.remove("active"));
 
-    btn.classList.add("active");
+            btn.classList.add("active");
 
-    mostrarGuia(color.disponibilidad);
+            mostrarGuia(color.disponibilidad);
 
-    const btnCart = document.getElementById("addToCart");
-    btnCart.disabled = false;
-    btnCart.textContent = "AGREGAR AL CARRITO";
+            const btnCart = document.getElementById("addToCart");
+            btnCart.disabled = false;
+            btnCart.textContent = "AGREGAR AL CARRITO";
 
-});
+        });
 
         colorSelector.appendChild(btn);
     });

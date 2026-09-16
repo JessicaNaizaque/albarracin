@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Christian Albarracín - Tienda</title>
+<title>Christian Albarracín - Producto</title>
  <link rel="icon" href="assets/img/logo albarracin.png" type="image/x-icon">
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -76,7 +76,7 @@
                                 href="tienda.html"
                                >
 
-                                Tienda
+                               Portafolio
 
                               
 
@@ -162,7 +162,8 @@
 
                     <h3>{{ obra.title }}</h3>
 
-                    <span>{{ obra.price }} {{ obra.currency }}</span>
+                    <!-- <span>{{ obra.price }} {{ obra.currency }}</span> -->
+                    <span>COLOR</span> 
 
                 </div>
 
@@ -208,19 +209,13 @@
                 COLOR
             </span>
 
-            <div class="precio">
+            <div class="sizes" id="Medida"></div>
+
+            <!-- <div class="precio">
                 $ 00.000.00
-            </div>
+            </div> -->
+            
 
-            <div class="guia-link ">
-
-                Guia de tamaño
-
-                <button id="openGuide">
-                    ver
-                </button>
-
-            </div>
 
             <!--div class="sizes" id="Medida">
 
@@ -240,7 +235,7 @@
             <div class="stock">
                 stock: <label></label>
             </div>
-            <div class="sizes" id="Medida"></div>
+            
             <div class="selector-row">
 
                 
@@ -251,40 +246,54 @@
                     <div id="colorSelector"></div>
 
                 </div>
+                <div>
+
+                    <label>Vendidos</label>
+
+                    <div id="colorDisable"></div>
+
+                </div>
 
             </div>
-            <div>
 
-               <label>Vendidos</label>
 
-               <div id="colorDisable"></div>
+
+            <div class="guia-link ">
+
+               Guia de tamaño
+
+               <button id="openGuide">
+                   ver
+               </button>
 
            </div>
 
+            <div id="sizeGuide" class="">
+                <div id="guideTable" ></div>
+
+                <img
+                    id="guideImage"
+                    src="assets/img/tamannos.png"
+                    alt="Guía de tamaños">
+
+
+            </div>
+
+
+
             <button class="cart-btn" id="addToCart" disabled>
-                AGREGAR AL CARRITO
+                RESERVAR MI OBRA
             </button>
 
+
+
+
         
-
-            <div id="sizeGuide" class="">
-    <div id="guideTable" ></div>
-
-    <img
-        id="guideImage"
-        src="assets/img/tamannos.png"
-        alt="Guía de tamaños">
-
-
-</div>
-
         </aside>
 
     </div>
 
 </section>
-
-
 
 
 <section id="newsletter-footer">
@@ -356,7 +365,6 @@
     </div>
 
 </section>
-
 <!-- ========================================= -->
 <!-- PANEL CARRITO -->
 <!-- ========================================= -->
@@ -377,9 +385,7 @@
 
             <div class="cart-info">
 
-                <div class="cart-price" id="cartPrice">
-                    $ 00.000.000
-                </div>
+
 
                 <div class="cart-artist" id="cartArtist">
                     Christian Albarracin
@@ -395,94 +401,91 @@
 
             </div>
 
-            <div class="cart-image">
-
-                <img
-                    id="cartImage"
-                    src="assets/img/tmb-1.png"
-                    alt="Prisma Cedro">
-
-            </div>
-
+        
         </div>
 
-        <!-- DETALLE -->
-
-        <div class="cart-detail">
-
-            <div class="detail-row">
-
-                <span class="detail-label">
-                    Cantidad______________
-                </span>
-
-                <span id="cartQty">
-                    1
-                </span>
-
-            </div>
-
-            <div class="detail-row">
-
-                <span class="detail-label">
-                    Tamaño______________
-                </span>
-
-                <span id="cartSize">
-                    120 CM
-                </span>
-
-            </div>
-
-            <div class="detail-row">
-
-                <span class="detail-label">
-                    Color_______________
-                </span>
-
-                <span id="cartColor">
-                    #Prisma Cedro
-                </span>
-
-            </div>
-
-            <div class="detail-subtotal">
-
-                <span id="cartSubtotal">
-                    $ 00.000.000
-                </span>
-
-            </div>
-
-        </div>
-
+        
+        
         <!-- LINEA -->
 
         <div class="cart-divider"></div>
 
-        <!-- TOTAL -->
+        <!-- Formulario -->
 
-        <div class="cart-total">
+        <div class="col-lg-12 mt-6">
 
-            <span>
-                Total:
-            </span>
+               
+            <form
+                id="contactForm"
+                class="needs-validation"
+                novalidate>
 
-            <span id="cartTotal">
-                $ 00.000.000
-            </span>
+                <div class="mb-4">
 
-        </div>
+                    <label class="form-label">
+                        Nombre y apellido
+                    </label>
 
-        <!-- BOTON -->
+                    <input
+                        type="text"
+                        class="form-control form-line"
+                        required>
 
-        <div class="cart-footer">
+                </div>
 
-            <button class="buy-btn">
+                <div class="mb-4">
 
-                COMPRAR
+                    <label class="form-label">
+                        Cédula
+                    </label>
 
-            </button>
+                    <input
+                        type="number"
+                        class="form-control form-line"
+                        required>
+
+                </div>
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+                        Móvil
+                    </label>
+
+                    <input
+                        type="phone"
+                        class="form-control form-line"
+                        required>
+
+                </div>
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control form-line"
+                        required>
+
+                </div>
+
+
+                <div class="text-end">
+
+                    <button
+                        class="btn btn-dark px-5 py-3"
+                        type="submit">
+
+                        CONFIRMAR
+
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
 
@@ -502,6 +505,7 @@
 <script src="assets/producto.js"></script>
 
 
+<script src="assets/lensZoom.js"></script>
 
 </body>
 </html>

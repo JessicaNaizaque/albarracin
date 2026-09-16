@@ -34,7 +34,7 @@
     const artista = detalle.querySelector(".artista");
     const titulo = detalle.querySelector("h2");
     const categoria = detalle.querySelector(".categoria");
-    const precio = detalle.querySelector(".precio");
+    // const precio = detalle.querySelector(".precio");
     const sizesWrap = document.getElementById("Medida");
     const tamanoLabel = detalle.querySelector(".tamanno label");
     const stockLabel = detalle.querySelector(".stock label");
@@ -88,16 +88,16 @@
     // The detail sidebar (not the grid/carousel) shows the price of the
     // currently selected variant, falling back to the obra's base price
     // when the variant has no price of its own.
-    function variantMoney(variant, obra) {
-        const value = variant && variant.price != null ? variant.price : obra.price;
-        const currency = (variant && variant.currency) || obra.currency || "";
-        return `${value} ${currency}`.trim();
-    }
-
-    function renderPrice() {
-        if (!precio || !state.obra) return;
-        precio.textContent = variantMoney(state.variant, state.obra);
-    }
+    // function variantMoney(variant, obra) {
+    //     const value = variant && variant.price != null ? variant.price : obra.price;
+    //     const currency = (variant && variant.currency) || obra.currency || "";
+    //     return `${value} ${currency}`.trim();
+    // }
+    //
+    // function renderPrice() {
+    //     if (!precio || !state.obra) return;
+    //     precio.textContent = variantMoney(state.variant, state.obra);
+    // }
 
     // Color names come as Spanish labels (e.g. "Amarillo"); map the common
     // ones to CSS colors, otherwise try the raw value, else fall back to grey.
@@ -222,7 +222,7 @@
                 ensureColorForVariant();
                 renderColors();
                 renderGuide();
-                renderPrice();
+                // renderPrice();
                 updateAddToCart();
             });
 
@@ -234,7 +234,7 @@
 
     function renderSizeStock() {
         if (tamanoLabel) {
-            tamanoLabel.textContent = state.variant.dimensions != null ? `${state.variant.dimensions}` : "";
+            tamanoLabel.textContent = state.variant && state.variant.dimensions != null ? `${state.variant.dimensions}` : "";
         }
         if (stockLabel) {
             // Stock reflects the currently selected size's variant.
@@ -372,27 +372,28 @@
         const obra = state.obra;
         if (!obra) return;
 
-        const variant = state.variant;
-        const currency = (variant && variant.currency) || obra.currency || "";
-        const unit = Number(variant && variant.price != null ? variant.price : obra.price) || 0;
-        const line = unit * state.qty;
-        const unitStr = `${unit} ${currency}`.trim();
-        const lineStr = `${line} ${currency}`.trim();
+        // Checkout totals were replaced by the reservation form.
+        // const variant = state.variant;
+        // const currency = (variant && variant.currency) || obra.currency || "";
+        // const unit = Number(variant && variant.price != null ? variant.price : obra.price) || 0;
+        // const line = unit * state.qty;
+        // const unitStr = `${unit} ${currency}`.trim();
+        // const lineStr = `${line} ${currency}`.trim();
 
         const colorLabel = (state.color && state.color.label) || "";
 
         setText("cartTitle", obra.title || "");
         setText("cartArtist", (obra.artist && obra.artist.name) || "Christian Albarracín");
         setText("cartCategory", colorLabel);
-        setText("cartQty", state.qty);
-        setText("cartSize", state.size != null ? `${state.size} cm` : "");
-        setText("cartColor", colorLabel);
-        setText("cartPrice", unitStr);
-        setText("cartSubtotal", lineStr);
-        setText("cartTotal", lineStr);
-
-        const cartImage = document.getElementById("cartImage");
-        if (cartImage) cartImage.src = obra.cover_image || FALLBACK_IMG;
+        // setText("cartQty", state.qty);
+        // setText("cartSize", state.size != null ? `${state.size} cm` : "");
+        // setText("cartColor", colorLabel);
+        // setText("cartPrice", unitStr);
+        // setText("cartSubtotal", lineStr);
+        // setText("cartTotal", lineStr);
+        //
+        // const cartImage = document.getElementById("cartImage");
+        // if (cartImage) cartImage.src = obra.cover_image || FALLBACK_IMG;
     }
 
     function updateAddToCart() {
@@ -415,6 +416,26 @@
         });
     }
 
+    // Reservation form" keep the current obra/size/color in `state`
+    // and stop the native submit so the page does not reload. No reservation
+    // API yet. TODO: wire the payload here when the backend is ready.
+    const reserveForm = document.getElementById("contactForm");
+    if (reserveForm) {
+        reserveForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (!reserveForm.checkValidity()) {
+                reserveForm.classList.add("was-validated");
+                return;
+            }
+            // const payload = {
+            //     obraId: state.obra && state.obra.id,
+            //     size: state.size,
+            //     color: state.color,
+            //     qty: state.qty,
+            // };
+        });
+    }
+
     // ---------- Abrir / cerrar detalle ----------
 
     function openObra(obra) {
@@ -433,7 +454,7 @@
 
         artista.textContent = (obra.artist && obra.artist.name) || "Christian Albarracin";
         titulo.textContent = obra.title || "";
-        renderPrice();
+        // renderPrice();
 
         buildGallery(obra);
         renderSizes();

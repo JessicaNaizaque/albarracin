@@ -3003,7 +3003,7 @@ font-family: 'HelveticaNeueBold';
 
 .obra-layout{
 
-    width:min(90%,1450px);
+    width:min(70%,1450px);
 
     margin:auto;
 
@@ -3012,7 +3012,7 @@ font-family: 'HelveticaNeueBold';
     grid-template-columns:
     58% 42%;
 
-    gap:90px;
+    gap:60px;
 
     align-items:start;
 }
@@ -3098,9 +3098,7 @@ font-family: 'HelveticaNeueBold';
 .sizes{
 
     display:flex;
-    flex-wrap: wrap;
-    justify-content:flex-start;
-    align-items:center;
+
     gap:20px;
     
     margin:30px 0;
@@ -3108,16 +3106,15 @@ font-family: 'HelveticaNeueBold';
 
 .sizes button{
 
-    flex:0 1 120px;
-    min-width: 90px;
+    width:110px;
+
     height:60px;
-    padding:0 14px;
+
     border:1px solid #7d7d7d;
 
     background:none;
     border-radius: 5px;
     font-size:1.8rem;
-    white-space:nowrap;
 }
 
 .selector-row{
@@ -3152,31 +3149,23 @@ font-family: 'HelveticaNeueBold';
 .color-btn{
 
     font-family: "Anek Gujarati", sans-serif;
-    width:50px;
+    width:30px;
 
-    height:50px;
+    height:30px;
 
-    border:1px solid #8f8f8f;
+    border:none;
 
     background:#bf5375;
 
-    border-radius:50px;
-    margin: 5px; 
+    border-radius:none;
+    margin: 0; 
     position: relative;
-    color: white;
-    font-weight: bold;
-    font-size: x-large;
 }
 
 .color-btn.agotado {
-    opacity: 0.6;
+    opacity: 0.5;
     cursor: not-allowed;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    line-height: 1;    
 }
 
 .color-btn.agotado::after {
@@ -3236,7 +3225,10 @@ font-family: 'HelveticaNeueBold';
 
 #sizeGuide{
 
-    margin-top:60px;
+    margin-left:40px;
+    margin-top:50px;
+    margin-bottom:50px;
+    margin-right:50px;
 
     max-width:520px;
 
@@ -3404,7 +3396,6 @@ font-family: 'HelveticaNeueBold';
     .sizes {
         gap: 8px;
         flex-wrap: wrap;
-        justify-content: center;
     }
     .sizes button {
         width: 70px;
@@ -4683,5 +4674,50 @@ font-size:4rem;
 font-size:5rem;
 
 }
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================
+   ZOOM DENTRO DE LA IMAGEN
+   ========================================== */
+
+#viewer {
+    position: relative !important;
+    overflow: hidden !important;
+    cursor: zoom-in;
+}
+
+/* Imagen principal */
+
+#viewer img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+
+    transform-origin: 50% 50%;
+    transition: transform 0.08s ease-out;
+
+    will-change: transform;
+}
+
+
+/* En mobile no hacemos zoom */
+
+@media (max-width: 1100px) {
+
+    #viewer {
+        cursor: default;
+    }
+
+    #viewer img {
+        transform: none !important;
+    }
 
 }

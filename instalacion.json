@@ -1,0 +1,426 @@
+[
+    {
+            "id": 34,
+            "serial_number": "ESP002",
+            "title": "SUJETOS DE CIUDAD: Espaldas",
+            "category": "Instalación",
+            "slug": "34-sujetos-de-ciudad-espaldas",
+            "artist": {
+                "id": 1,
+                "name": "Cristian Albarracin",
+                "biography": null,
+                "nationality": null,
+                "birth_year": null,
+                "death_year": null,
+                "photo_url": null,
+                "is_active": true,
+                "created_at": "2026-07-01T17:42:31-05:00",
+                "updated_at": "2026-07-01T17:42:31-05:00"
+            },
+            "artist_id": 1,
+            "technique": "Composiciones tridimensionales en capas de papel",
+            "dimensions": null,
+            "width": null,
+            "height": null,
+            "depth": null,
+            "year": "2026",
+            "description": null,
+            "price": 0,
+            "currency": "COP",
+            "tags": [],
+            "status": "available",
+            "quantity_available": 10,
+            "is_published": true,
+            "is_available": true,
+            "cover_image": "XXX/storage/artworks/34/gpQ7XjfKTU0zcemes2ELhHTlC4PQ8O4EPpHwHIVm.jpg",
+            "images": [
+                {
+                    "id": 10,
+                    "url": "XXX/storage/artworks/34/gpQ7XjfKTU0zcemes2ELhHTlC4PQ8O4EPpHwHIVm.jpg",
+                    "original_name": "Christian Albarracin8777.jpg",
+                    "media_type": "image",
+                    "order": 0,
+                    "is_cover": true,
+                    "created_at": "2026-09-15T14:47:56-05:00"
+                },
+                {
+                    "id": 12,
+                    "url": "XXX/storage/artworks/34/1xsa1gJSYDdS0gcVUg7NEacMJ7UaeCm1glKdKne6.jpg",
+                    "original_name": "Christian Albarracin8931.jpg",
+                    "media_type": "image",
+                    "order": 1,
+                    "is_cover": false,
+                    "created_at": "2026-09-15T14:48:00-05:00"
+                },
+                {
+                    "id": 11,
+                    "url": "XXX/storage/artworks/34/rMdTB5G607Dpz1oSbJ4AywfNTO34ITLxcj91spbK.jpg",
+                    "original_name": "Christian Albarracin8925.jpg",
+                    "media_type": "image",
+                    "order": 2,
+                    "is_cover": false,
+                    "created_at": "2026-09-15T14:47:58-05:00"
+                },
+                {
+                    "id": 13,
+                    "url": "XXX/storage/artworks/34/Nrg9wknEdSdBKJYt2pLxd9Veb6TkpfzfqSbFzYCl.jpg",
+                    "original_name": "Christian Albarracin9263.jpg",
+                    "media_type": "image",
+                    "order": 3,
+                    "is_cover": false,
+                    "created_at": "2026-09-15T14:48:03-05:00"
+                },
+                {
+                    "id": 14,
+                    "url": "XXX/storage/artworks/34/AStRSbxAMz2Jo5tOLqDtl2ATTeybyS8thIRlOM7D.jpg",
+                    "original_name": "Christian-Albarracin8591.jpg",
+                    "media_type": "image",
+                    "order": 4,
+                    "is_cover": false,
+                    "created_at": "2026-09-15T14:48:05-05:00"
+                }
+            ],
+            "variants": [
+                {
+                    "id": 117,
+                    "sku": "10",
+                    "type": "OBRA 002",
+                    "color": null,
+                    "size": "50 cm",
+                    "dimensions": "50 cm x 15 cm x 7cm",
+                    "price": 0,
+                    "currency": "COP",
+                    "stock": 10,
+                    "quantity_built": 10,
+                    "quantity_available": 10,
+                    "color_mode": "unique",
+                    "available_colors": [
+                        {
+                            "id": 2654,
+                            "hex": "#D9BE8A",
+                            "label": "Prisma Camoscio"
+                        },
+                        {
+                            "id": 2655,
+                            "hex": "#F4C430",
+                            "label": "Girasole"
+                        },
+                        {
+                            "id": 2656,
+                            "hex": "#C69C35",
+                            "label": "Cedro"
+                        },
+                        {
+                            "id": 2657,
+                            "hex": "#8B5A3C",
+                            "label": "Tabacco"
+                        },
+                        {
+                            "id": 2658,
+                            "hex": "#F28C28",
+                            "label": "Mandarino"
+                        },
+                        {
+                            "id": 2659,
+                            "hex": "#D72638",
+                            "label": "Scarlatto"
+                        },
+                        {
+                            "id": 2660,
+                            "hex": "#A01D3A",
+                            "label": "Rubino"
+                        },
+                        {
+                            "id": 2661,
+                            "hex": "#F48C82",
+                            "label": "Salmone"
+                        },
+                        {
+                            "id": 2662,
+                            "hex": "#F3A5C4",
+                            "label": "Rosa"
+                        },
+                        {
+                            "id": 2663,
+                            "hex": "#D93D82",
+                            "label": "Ciclamino"
+                        },
+                        {
+                            "id": 2664,
+                            "hex": "#C6A2D6",
+                            "label": "Lila"
+                        },
+                        {
+                            "id": 2665,
+                            "hex": "#7D4BB3",
+                            "label": "Viola"
+                        },
+                        {
+                            "id": 2666,
+                            "hex": "#73CFF3",
+                            "label": "Azzurro"
+                        },
+                        {
+                            "id": 2667,
+                            "hex": "#2DBFC4",
+                            "label": "Turchese"
+                        },
+                        {
+                            "id": 2668,
+                            "hex": "#006C8F",
+                            "label": "Oceano"
+                        },
+                        {
+                            "id": 2669,
+                            "hex": "#0047AB",
+                            "label": "Prisma Cobalto"
+                        },
+                        {
+                            "id": 2670,
+                            "hex": "#3F4FA8",
+                            "label": "Indigo"
+                        },
+                        {
+                            "id": 2671,
+                            "hex": "#A8C66C",
+                            "label": "Pistacchio"
+                        },
+                        {
+                            "id": 2672,
+                            "hex": "#008C45",
+                            "label": "Verde"
+                        },
+                        {
+                            "id": 2673,
+                            "hex": "#29543A",
+                            "label": "Pino"
+                        },
+                        {
+                            "id": 2674,
+                            "hex": "#4B2E2A",
+                            "label": "Cioccolato"
+                        },
+                        {
+                            "id": 2675,
+                            "hex": "#6F4E37",
+                            "label": "Café"
+                        },
+                        {
+                            "id": 2676,
+                            "hex": "#A6A6A6",
+                            "label": "Grigio"
+                        },
+                        {
+                            "id": 2677,
+                            "hex": "#5A5F66",
+                            "label": "Piombo"
+                        },
+                        {
+                            "id": 2678,
+                            "hex": "#1E1E1E",
+                            "label": "Negro"
+                        }
+                    ],
+                    "colors": [
+                        {
+                            "id": 2654,
+                            "hex": "#D9BE8A",
+                            "label": "Prisma Camoscio",
+                            "sort_order": 1
+                        },
+                        {
+                            "id": 2655,
+                            "hex": "#F4C430",
+                            "label": "Girasole",
+                            "sort_order": 2
+                        },
+                        {
+                            "id": 2656,
+                            "hex": "#C69C35",
+                            "label": "Cedro",
+                            "sort_order": 3
+                        },
+                        {
+                            "id": 2657,
+                            "hex": "#8B5A3C",
+                            "label": "Tabacco",
+                            "sort_order": 4
+                        },
+                        {
+                            "id": 2658,
+                            "hex": "#F28C28",
+                            "label": "Mandarino",
+                            "sort_order": 5
+                        },
+                        {
+                            "id": 2659,
+                            "hex": "#D72638",
+                            "label": "Scarlatto",
+                            "sort_order": 6
+                        },
+                        {
+                            "id": 2660,
+                            "hex": "#A01D3A",
+                            "label": "Rubino",
+                            "sort_order": 7
+                        },
+                        {
+                            "id": 2661,
+                            "hex": "#F48C82",
+                            "label": "Salmone",
+                            "sort_order": 8
+                        },
+                        {
+                            "id": 2662,
+                            "hex": "#F3A5C4",
+                            "label": "Rosa",
+                            "sort_order": 9
+                        },
+                        {
+                            "id": 2663,
+                            "hex": "#D93D82",
+                            "label": "Ciclamino",
+                            "sort_order": 10
+                        },
+                        {
+                            "id": 2664,
+                            "hex": "#C6A2D6",
+                            "label": "Lila",
+                            "sort_order": 11
+                        },
+                        {
+                            "id": 2665,
+                            "hex": "#7D4BB3",
+                            "label": "Viola",
+                            "sort_order": 12
+                        },
+                        {
+                            "id": 2666,
+                            "hex": "#73CFF3",
+                            "label": "Azzurro",
+                            "sort_order": 13
+                        },
+                        {
+                            "id": 2667,
+                            "hex": "#2DBFC4",
+                            "label": "Turchese",
+                            "sort_order": 14
+                        },
+                        {
+                            "id": 2668,
+                            "hex": "#006C8F",
+                            "label": "Oceano",
+                            "sort_order": 15
+                        },
+                        {
+                            "id": 2669,
+                            "hex": "#0047AB",
+                            "label": "Prisma Cobalto",
+                            "sort_order": 16
+                        },
+                        {
+                            "id": 2670,
+                            "hex": "#3F4FA8",
+                            "label": "Indigo",
+                            "sort_order": 17
+                        },
+                        {
+                            "id": 2671,
+                            "hex": "#A8C66C",
+                            "label": "Pistacchio",
+                            "sort_order": 18
+                        },
+                        {
+                            "id": 2672,
+                            "hex": "#008C45",
+                            "label": "Verde",
+                            "sort_order": 19
+                        },
+                        {
+                            "id": 2673,
+                            "hex": "#29543A",
+                            "label": "Pino",
+                            "sort_order": 20
+                        },
+                        {
+                            "id": 2674,
+                            "hex": "#4B2E2A",
+                            "label": "Cioccolato",
+                            "sort_order": 21
+                        },
+                        {
+                            "id": 2675,
+                            "hex": "#6F4E37",
+                            "label": "Café",
+                            "sort_order": 22
+                        },
+                        {
+                            "id": 2676,
+                            "hex": "#A6A6A6",
+                            "label": "Grigio",
+                            "sort_order": 23
+                        },
+                        {
+                            "id": 2677,
+                            "hex": "#5A5F66",
+                            "label": "Piombo",
+                            "sort_order": 24
+                        },
+                        {
+                            "id": 2678,
+                            "hex": "#1E1E1E",
+                            "label": "Negro",
+                            "sort_order": 25
+                        }
+                    ],
+                    "sold_units": [],
+                    "is_published": true,
+                    "is_available": true,
+                    "sort_order": 0,
+                    "created_at": "2026-09-15T14:36:59-05:00",
+                    "updated_at": "2026-09-15T14:36:59-05:00"
+                }
+            ],
+            "created_at": "2026-09-15T14:23:32-05:00",
+            "updated_at": "2026-09-15T14:36:59-05:00"
+        },
+        {
+            "id": 33,
+            "serial_number": "ESP.002",
+            "title": "SUJETOS DE CIUDAD: Espaldas",
+            "category": "Instalación",
+            "slug": "33-sujetos-de-ciudad-espaldas",
+            "artist": {
+                "id": 1,
+                "name": "Cristian Albarracin",
+                "biography": null,
+                "nationality": null,
+                "birth_year": null,
+                "death_year": null,
+                "photo_url": null,
+                "is_active": true,
+                "created_at": "2026-07-01T17:42:31-05:00",
+                "updated_at": "2026-07-01T17:42:31-05:00"
+            },
+            "artist_id": 1,
+            "technique": "Composiciones tridimensionales en capas de papel",
+            "dimensions": null,
+            "width": null,
+            "height": null,
+            "depth": null,
+            "year": "2026",
+            "description": null,
+            "price": 0,
+            "currency": "COP",
+            "tags": [],
+            "status": "available",
+            "quantity_available": 1,
+            "is_published": true,
+            "is_available": true,
+            "cover_image": null,
+            "images": [],
+            "variants": [],
+            "created_at": "2026-09-15T14:20:30-05:00",
+            "updated_at": "2026-09-15T14:20:30-05:00"
+        }
+    ]
