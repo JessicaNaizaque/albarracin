@@ -25,12 +25,36 @@ ARTWORKS_API = f"{API_BASE_URL}/catalog/artworks"
 REQUEST_TIMEOUT = 5.0
 
 
+def _hide_unavailable_variants(obra: dict) -> dict:
+    """Drop the obra's variants that are unpublished or unavailable.
+
+    Only the variants are filtered; the obra's own ``is_published`` /
+    ``is_available`` are left untouched. A missing flag is treated as visible,
+    so a partial upstream response never empties the size selector.
+    """
+    variants = obra.get("variants")
+    if not isinstance(variants, list):
+        return obra
+
+    return obra | {
+        "variants": [
+            variant
+            for variant in variants
+            if isinstance(variant, dict)
+            and variant.get("is_published") is not False
+            and variant.get("is_available") is not False
+        ]
+    }
+
+
 def fetch_obras(category: str | None = None) -> list[dict]:
     """Return the list of available obras (``json["data"]``).
 
     ``category`` (e.g. "escultura" / "instalacion") is forwarded to the
     upstream API as a query param when provided, so the listing can be
     filtered by the menu selection.
+
+    Each obra's variants are narrowed to the published and available ones.
 
     Always fetches fresh data from the upstream API (no caching). On any error (timeout, HTTP error,
     invalid JSON) the error is logged and an empty list is returned.
@@ -50,7 +74,7 @@ def fetch_obras(category: str | None = None) -> list[dict]:
         logger.warning("Failed to fetch obras from %s (category=%s): %s", ARTWORKS_API, category, exc)
         return []
 
-    return data
+    return [_hide_unavailable_variants(obra) for obra in data if isinstance(obra, dict)]
 
 
 def fetch_obra(obra_id: str) -> dict | None:
@@ -74,4 +98,4 @@ def fetch_obra(obra_id: str) -> dict | None:
         logger.warning("Failed to fetch obra %s from %s: %s", obra_id, url, exc)
         return None
 
-    return data
+    return _hide_unavailable_variants(data) if data else data
