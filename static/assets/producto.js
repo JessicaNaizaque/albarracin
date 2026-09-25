@@ -152,28 +152,84 @@
 
     // ---------- Galeria ----------
 
-    function setViewerImage(src) {
-        viewer.innerHTML = `<img src="${src}" alt="">`;
+    function isVideoMedia(item) {
+        if (!item) return false;
+        if (item.media_type === "video") return true;
+        const url = String(item.url || "").split("?")[0].split("#")[0].toLowerCase();
+        return /\.(mp4|webm|ogg|mov|m4v)$/.test(url);
+    }
+
+    function showMedia(item) {
+        viewer.innerHTML = "";
+        if (item.type === "video") {
+            const video = document.createElement("video");
+            video.controls = true;
+            video.autoplay = true;
+            video.muted = true;
+            video.playsInline = true;
+            video.src = item.src;
+            viewer.appendChild(video);
+            return;
+        }
+        const img = document.createElement("img");
+        img.src = item.src;
+        img.alt = "";
+        viewer.appendChild(img);
+    }
+
+    function createThumbMedia(item) {
+        if (item.type === "video") {
+            const video = document.createElement("video");
+            video.muted = true;
+            video.playsInline = true;
+            video.preload = "metadata";
+            video.src = item.src + "#t=0.1";
+            return video;
+        }
+        const img = document.createElement("img");
+        img.src = item.src;
+        img.alt = "";
+        return img;
     }
 
     function buildGallery(obra) {
         thumbGrid.innerHTML = "";
 
-        const cover = obra.cover_image || FALLBACK_IMG;
-        const images = uniq(
-            [cover].concat((obra.images || []).map((im) => im && im.url).filter(Boolean))
-        );
+        const items = [];
+        const seen = new Set();
 
-        setViewerImage(images[0]);
+        function add(src, type) {
+            if (!src || seen.has(src)) return;
+            seen.add(src);
+            items.push({ src, type });
+        }
 
-        images.forEach((src, index) => {
+        add(obra.cover_image || FALLBACK_IMG, "image");
+        (obra.images || []).forEach((im) => {
+            if (!im || !im.url) return;
+            add(im.url, isVideoMedia(im) ? "video" : "image");
+        });
+
+        if (!items.length) add(FALLBACK_IMG, "image");
+
+        showMedia(items[0]);
+
+        items.forEach((item, index) => {
             const thumb = document.createElement("button");
             thumb.type = "button";
             thumb.className = "thumb" + (index === 0 ? " active" : "");
-            thumb.innerHTML = `<img src="${src}" alt="">`;
+            thumb.appendChild(createThumbMedia(item));
+
+            if (item.type === "video") {
+                const badge = document.createElement("span");
+                badge.className = "thumb-play";
+                badge.textContent = "▶";
+                badge.setAttribute("aria-hidden", "true");
+                thumb.appendChild(badge);
+            }
 
             thumb.addEventListener("click", () => {
-                setViewerImage(src);
+                showMedia(item);
                 thumbGrid
                     .querySelectorAll(".thumb")
                     .forEach((t) => t.classList.remove("active"));

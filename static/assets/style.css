@@ -3052,6 +3052,8 @@ font-family: 'HelveticaNeueBold';
     width:100%;
 
     min-width:0;
+
+    position:relative;
 }
 
 .thumb img,
@@ -3062,6 +3064,28 @@ font-family: 'HelveticaNeueBold';
     height:auto;
 
     display:block;
+}
+
+.thumb video{
+    pointer-events:none;
+}
+
+.thumb-play{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:rgba(0,0,0,.45);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    pointer-events:none;
+    font-size:14px;
+    line-height:1;
 }
 
 .artista{
