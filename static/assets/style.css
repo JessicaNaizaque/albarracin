@@ -3034,9 +3034,9 @@ font-family: 'HelveticaNeueBold';
     display:grid;
 
     grid-template-columns:
-    repeat(3,1fr);
+    repeat(3, minmax(0, 1fr));
 
-    gap:20px;
+    gap:10px;
 }
 
 .thumb{
@@ -3048,13 +3048,19 @@ font-family: 'HelveticaNeueBold';
     padding:0;
 
     cursor:pointer;
+
+    width:100%;
+
+    min-width:0;
 }
 
 .thumb img,
 .thumb video{
 
-      width: 260px;
-    height: 300pxs;
+    width:100%;
+
+    height:auto;
+
     display:block;
 }
 
@@ -4048,8 +4054,9 @@ align-items: flex-end;
     display: none;
 }
 
-.obra-layout button img, .obra-layout button video{
-    max-width: 100px;
+.obra-layout .thumb img,
+.obra-layout .thumb video{
+    max-width:100%;
 }
 
 
