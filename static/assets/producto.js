@@ -166,6 +166,7 @@
             video.controls = true;
             video.autoplay = true;
             video.muted = true;
+            video.loop = true;
             video.playsInline = true;
             video.src = item.src;
             viewer.appendChild(video);
